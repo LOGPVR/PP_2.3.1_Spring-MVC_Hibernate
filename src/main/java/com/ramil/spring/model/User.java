@@ -6,16 +6,6 @@ import jakarta.persistence.*;
 @Table (name = "users")
 public class User {
 
-    public User() {
-    }
-
-    public User(Long id, String name, String lastName, String email) {
-        this.id = id;
-        this.name = name;
-        this.lastName = lastName;
-        this.email = email;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,6 +18,16 @@ public class User {
 
     @Column(name = "email")
     private String email;
+
+    public User() {
+    }
+
+    public User(Long id, String name, String lastName, String email) {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+    }
 
     public Long getId() {
         return id;
