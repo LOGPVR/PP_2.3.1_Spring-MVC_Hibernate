@@ -8,6 +8,26 @@
         th, td { border: 1px solid #bbb; padding: 10px; text-align: left; }
         th { background-color: #f4f4f4; }
         .btn { display: inline-block; margin-bottom: 15px; padding: 8px 16px; background-color: #28a745; color: white; text-decoration: none; border-radius: 4px; font-family: sans-serif; }
+
+        /* Стили для кнопок в таблице */
+        .action-btn {
+            display: inline-block;
+            font-family: sans-serif;
+            font-size: 13.3333px;
+            padding: 3px 8px;
+            color: black;
+            background-color: #f0f0f0;
+            border: 1px solid #767676;
+            border-radius: 3px;
+            text-decoration: none;
+            cursor: pointer;
+            box-sizing: border-box;
+            vertical-align: middle;
+        }
+        .action-btn:hover {
+            background-color: #e5e5e5;
+            border-color: #4f4f4f;
+        }
     </style>
 </head>
 <body>
@@ -27,19 +47,17 @@
     </tr>
     </thead>
     <tbody>
-    <!-- Итерируемся по списку, полученному из контроллера -->
     <tr th:each="u : ${usersList}">
         <td th:text="${u.id}">1</td>
         <td th:text="${u.name}">Имя</td>
         <td th:text="${u.lastName}">Фамилия</td>
         <td th:text="${u.email}">email@example.com</td>
         <td>
-            <!-- Формируем ссылку на редактирование как /users/edit?id=... -->
-            <<a th:href="@{/edit(id=${u.id})}">Редактировать</a>
-            |
-            <!-- Форма отправки POST-запроса на удаление /users/delete?id=... -->
+            <!-- Ссылка с привязанным классом стилей -->
+            <a th:href="@{/edit(id=${u.id})}" class="action-btn">Редактировать</a>
+
             <form th:action="@{/delete(id=${u.id})}" method="post" style="display:inline;">
-                <button type="submit" onclick="return confirm('Вы уверены, что хотите удалить этого пользователя?')">Удалить</button>
+                <button type="submit" class="action-btn" onclick="return confirm('Вы уверены?')">Удалить</button>
             </form>
         </td>
     </tr>

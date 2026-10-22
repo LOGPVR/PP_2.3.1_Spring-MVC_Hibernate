@@ -32,12 +32,8 @@ public class UserController {
     }
 
     @PostMapping("/save")
-    public String saveUser(User user) {
-        if (user.getId() != null) {
-            userService.updateUser(user);
-        } else {
-            userService.saveUser(user);
-        }
+    public String saveOrUpdateUser(User user) {
+        userService.saveOrUpdateUser(user);
         return "redirect:/";
     }
 

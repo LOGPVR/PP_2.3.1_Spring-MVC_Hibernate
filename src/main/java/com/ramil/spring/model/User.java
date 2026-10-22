@@ -2,7 +2,6 @@ package com.ramil.spring.model;
 
 import jakarta.persistence.*;
 
-@SuppressWarnings("JpaDataSourceORMInspection")
 @Entity
 @Table (name = "users")
 public class User {
